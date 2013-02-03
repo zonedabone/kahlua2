@@ -47,6 +47,9 @@ public class KahluaTableImpl implements KahluaTable {
 
     @Override
     public void rawset(Object key, Object value) {
+        if(key instanceof String && ((String)key).toLowerCase().equals(key)){
+            rawset(((String)key).toLowerCase(), value);
+        }
         if (value == null) {
             delegate.remove(key);
             return;
@@ -56,6 +59,9 @@ public class KahluaTableImpl implements KahluaTable {
 
     @Override
     public Object rawget(Object key) {
+        if(key instanceof String && ((String)key).toLowerCase().equals(key)){
+            rawget(((String)key).toLowerCase());
+        }
         if (key == null) {
             return null;
         }
