@@ -22,6 +22,8 @@ public class KahluaUtil {
     private static final String TYPE_COROUTINE = "coroutine";
 	/** @exclude */
     private static final String TYPE_USERDATA = "userdata";
+    
+    public static StreamProvider provider;
 
 	public static double fromDouble(Object o) {
 		return ((Double) o).doubleValue();
@@ -339,4 +341,8 @@ public class KahluaUtil {
 	public static double getDoubleArg(LuaCallFrame callFrame, int i, String name) {
 		return getNumberArg(callFrame, i, name).doubleValue();
 	}
+	
+	public static interface StreamProvider{
+        public InputStream getStream(String name);
+    }
 }
